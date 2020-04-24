@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{{user.name}}{% endblock %}
+
+{% block content %}
+
+<div>
+    <a href="{{url_for('user.index')}}">Voltar</a>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.profile.photo}}</td>
+                <td><a href="{{ url_for('book.user_add_book', id=user.id) }}" class="btn btn-success">Adicionar Livro</a></td>
+                <td><a href="{{ url_for('user.delete', id=user.id) }}" class="btn btn-danger">Deletar</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-sm">
+      <thead>
+        <tr class="table-info">
+          <th scope="col">#</th>
+          <th scope="col">Livro</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for book in user.books %}
+        <tr >
+          <th scope="row">{{book.id}}</th>
+          <td>{{book.name}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}

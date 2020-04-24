@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block title %}Cadastro{% endblock %}
+
+{% block content %}
+    {% include 'components/notification.html' %}
+    {{render_form(form)}}
+{% endblock %}
+
+
+
