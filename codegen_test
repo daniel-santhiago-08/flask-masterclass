@@ -1,0 +1,6 @@
+sqlacodegen --outfile c:/temp/models.py postgresql://daniel_santhiago:DWhouse130_@dolce-gusto-medium.czm3momztmix.sa-east-1.rds.amazonaws.com:5432/dolce_gusto
+
+
+# DB: machines_crawler
+sqlacodegen --outfile c:/temp/models.py postgresql://daniel_santhiago:DWhouse130_@dolce-gusto-medium.czm3momztmix.sa-east-1.rds.amazonaws.com:5432/machines_crawler
+

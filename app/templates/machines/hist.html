@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Histórico{% endblock %}
+
+{% block content %}
+
+{% include 'components/notification.html' %}
+
+<form method="POST">
+
+
+    <div class="input-group mt-3 mb-3" id="filters">
+
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="select_produto">Produto</label>
+        </div>
+        <select id="select_produto" class="mr-2">
+            <option value="%" selected>Todos</option>
+        </select>
+
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="select_loja">Loja</label>
+        </div>
+        <select id="select_loja" class="mr-2">
+            <option value="%" selected>Todos</option>
+        </select>
+
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="date_data_extracao_start">Data Inicial</label>
+        </div>
+        <input type="date" id="date_data_extracao_start" class="mr-2" style="width: 150px;">
+
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="date_data_extracao_end">Data Final</label>
+        </div>
+        <input type="date" id="date_data_extracao_end" class="mr-2" style="width: 150px;">
+
+
+    </div>
+
+
+
+
+
+    <table class="table rounded mt-2 table-sm">
+        <thead id="table-header-ajax" class="thead"></thead>
+        <tbody id="table_body_ajax"></tbody>
+    </table>
+
+    {% include 'components/pagination.html' %}
+
+
+
+
+
+
+
+</form>
+
+{% endblock %}
+
+
+{% block script %}
+
+<script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+<!--<script src="{{url_for('static', filename='js/test-ajax.js')}}"></script>-->
+<script src="{{url_for('static', filename='js/ajax-form.js')}}"></script>
+
+
+{% endblock %}

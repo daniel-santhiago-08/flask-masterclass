@@ -1,5 +1,10 @@
 from app import db, login_manager
 from flask_login import UserMixin
+from sqlalchemy import BigInteger, Column, Date, Float, MetaData, Table, Text
+
+metadata = MetaData()
+
+
 
 @login_manager.user_loader
 def current_user(user_id):
@@ -40,3 +45,57 @@ class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(125), nullable=False)
     # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+
+
+t_machine_print = Table(
+    'machine_print', metadata,
+    Column('id', BigInteger),
+    Column('produto', Text),
+    Column('data', Date),
+    Column('loja', Text),
+    Column('url', Text)
+)
+
+
+t_price_crawler_evolution = Table(
+    'price_crawler_evolution', metadata,
+    Column('id', BigInteger),
+    Column('data_extracao', Date),
+    Column('mini_me', Float(53)),
+    Column('essenza', Float(53)),
+    Column('inissia', Float(53)),
+    Column('mimo_cafeteira', Float(53)),
+    Column('pop_plus', Float(53)),
+
+)
+
+
+t_price_crawler_hist = Table(
+    'price_crawler_hist', metadata,
+    Column('id', BigInteger),
+    Column('produto', Text),
+    Column('data_extracao', Date),
+    Column('loja', Text),
+    Column('preco', Text)
+)
+
+
+t_price_crawler_hist_temp = Table(
+    'price_crawler_hist_temp', metadata,
+    Column('product_name', Text),
+    Column('data_extracao', Text),
+    Column('loja', Text),
+    Column('price_num', Text),
+    Column('url', Text)
+)
+
+
+t_price_crawler_min = Table(
+    'price_crawler_min', metadata,
+    Column('id', BigInteger),
+    Column('produto', Text),
+    Column('data_extracao', Date),
+    Column('loja', Text),
+    Column('preco', Float(53))
+)

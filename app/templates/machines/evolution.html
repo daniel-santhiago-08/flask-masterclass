@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Evolução{% endblock %}
+
+{% block content %}
+
+{% include 'components/notification.html' %}
+
+<p>Máquinas</p>
+
+<table class="table rounded mt-2 table-sm">
+    <thead id="table-fill-header" class="thead">
+        <tr>
+            {% for coluna in colunas %}
+                <th id={{coluna}}"-id" style="white-space: nowrap; text-transform:capitalize;">
+                    {{coluna}}
+                    <i class="fa fa-chevron-down ml-2" id={{coluna}}"-order"></i>
+                </th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+    {% for machine in machines %}
+        <tr>
+            {% for coluna in colunas %}
+                <td>{{ machine._asdict()[coluna] }}</td>
+
+<!--             <td>{{ machine['{{coluna}}'] }}</td>-->
+            {% endfor %}
+        </tr>
+
+<!--            <td>{{ machine.id }}</td>-->
+<!--            <td>{{ machine.data_extracao.strftime('%d/%B/%Y') }}</td>-->
+<!--            <td>{{ machine.mini_me }}</td>-->
+<!--            <td>{{ machine.essenza }}</td>-->
+<!--            <td>{{ machine.inissia }}</td>-->
+<!--            <td>{{ machine.mimo_cafeteira }}</td>-->
+<!--            <td>{{ machine.pop_plus }}</td>-->
+<!--        </tr>-->
+    {% endfor %}
+    </tbody>
+
+
+</table>
+
+
+
+{% endblock %}

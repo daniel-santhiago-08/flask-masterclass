@@ -17,7 +17,7 @@ def book_add():
         db.session.add(book)
         db.session.commit()
         flash("Livro cadastrado com sucesso", "success")
-        return redirect(url_for('.book_add'))
+        return redirect(url_for('book.book_add'))
 
     return render_template('book/add.html', form=form)
 
@@ -31,5 +31,5 @@ def user_add_book(id):
         db.session.add(current_user)
         db.session.commit()
         flash("Livro cadastrado com sucesso", "success")
-        return redirect(url_for('unique', id=current_user.id))
+        return redirect(url_for('user.unique', id=current_user.id))
     return render_template('book/user_add_book.html', form=form)

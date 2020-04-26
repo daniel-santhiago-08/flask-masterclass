@@ -9,6 +9,7 @@ from datetime import timedelta
 from app.forms import LoginForm, RegisterForm
 
 
+
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
@@ -19,7 +20,7 @@ def register():
         user.password = generate_password_hash(form.password.data)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('user.index'))
     return render_template('register.html', form=form)
 
 
@@ -31,12 +32,12 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if not user:
             flash("E-mail não existe nos registros", "danger")
-            return redirect(url_for('.login'))
+            return redirect(url_for('auth.login'))
         if not check_password_hash(user.password, form.password.data):
             flash("Senha incorreta", "danger")
-            return redirect(url_for('.login'))
+            return redirect(url_for('auth.login'))
         login_user(user, remember=form.remember.data, duration=timedelta(days=7))
-        return redirect(url_for('index'))
+        return redirect(url_for('user.index'))
     return render_template('login.html', form=form)
 
 
@@ -44,4 +45,4 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('user.index'))
