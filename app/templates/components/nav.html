@@ -1,13 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+<nav class="navbar  navbar-expand-lg  bg-info mb-2">
     <div class="container">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="{{ url_for('user.index')}}">Usuarios</a>
+    <a class="navbar-brand" href="{{ url_for('user.index')}}"
+        style="font-weight:bold;">Nescafé Dolce Gusto</a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="machinesDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                   style="font-weight:bold;">
+                  Máquina
+                </a>
+                <div class="dropdown-menu" aria-labelledby="machinesDropdown">
+                  <a class="dropdown-item" href="{{ url_for('machines.hist')}}">Histórico</a>
+                </div>
+            </li>
+
             <li class="nav-item">
             <a class="nav-link" href="{{ url_for('book.book_add')}}">Adicionar Livros</a>
             </li>
@@ -15,20 +28,30 @@
 
             {% if not current_user.is_authenticated %}
             <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('auth.register')}}">Cadastrar</a>
+            <a class="nav-link" href="{{ url_for('auth.register')}}"
+               style="font-weight:bold;">Cadastrar</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('auth.login')}}">Login</a>
+            <a class="nav-link" href="{{ url_for('auth.login')}}"
+               style="font-weight:bold;">Login</a>
             </li>
             {% else %}
 
             <li class="nav-item dropdown">
+
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                   style="font-weight:bold;">
+
+
                   {{current_user}}
+                    <img src="{{url_for('static', filename='img/user_profile.jpg')}}"
+                     width="50px" height="50px" class="img-thumbnail rounded-circle">
+
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url_for('auth.logout')}}">Logout</a>
+                  <a class="dropdown-item" href="{{ url_for('auth.logout')}}"
+                      style="font-weight:bold;">Logout</a>
 <!--                  <a class="dropdown-item" href="#">Another action</a>-->
 <!--                  <div class="dropdown-divider"></div>-->
 <!--                  <a class="dropdown-item" href="#">Something else here</a>-->

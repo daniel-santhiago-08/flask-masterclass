@@ -25,6 +25,9 @@ def create_app():
                 )
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://daniel_santhiago:DWhouse130_@dolce-gusto-medium.czm3momztmix.sa-east-1.rds.amazonaws.com:5432/machines_crawler'
+    app.config['SQLALCHEMY_BINDS']  = {
+        'machines_old': 'sqlite:///pythonsqlite.db'
+    }
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = "Chave_Secreta"
     app.jinja_env.filters['formatdate'] = format_date

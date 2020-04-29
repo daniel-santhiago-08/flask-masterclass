@@ -57,6 +57,18 @@ t_machine_print = Table(
     Column('url', Text)
 )
 
+# t_machine_print_old = Table(
+#     'machine_print', metadata,
+#     Column('id', BigInteger),
+#     Column('produto', Text),
+#     Column('data', Date),
+#     Column('loja', Text),
+#     Column('url', Text),
+#     info={'bind_key': 'machines_old',
+#           'extend_existing': True}
+# )
+
+
 
 t_price_crawler_evolution = Table(
     'price_crawler_evolution', metadata,
@@ -78,6 +90,18 @@ t_price_crawler_hist = Table(
     Column('data_extracao', Date),
     Column('loja', Text),
     Column('preco', Text)
+)
+
+
+t_price_crawler_hist_old = Table(
+    'price_crawler_hist', metadata,
+    Column('id', BigInteger),
+    Column('produto', Text),
+    Column('data_extracao', Date),
+    Column('loja', Text),
+    Column('preco', Text),
+    info={'bind_key': 'machines_old'},
+    extend_existing=True
 )
 
 
